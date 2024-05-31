@@ -411,7 +411,7 @@ def process():
             diff_Rs = R_smooth.diff().squeeze()
             PN = 'Particle '+str(particle)
             
-            # NormLoD = LoD /max(temp_G)*100
+            NormLoD = LoD /max(temp_G)*100
 
             #####========================HMM fitting==========================#####
             if Fit_targ == 'red':
