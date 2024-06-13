@@ -776,7 +776,11 @@ tips = [
         "Maximum distance in \u03bcm between particle location of \ntwo separate particles to be considered the same track.",
         "Track with normalized intensity below this value (%) would \nnot be included in HMM analysis.",
         "Select whether you want to save all the plots in the assigned directory or not.",
-        "Name of the folder for saving plots and the filename of data spreadsheet. \nYou can use default filename or input a new name."
+        "Name of the folder for saving plots and the filename of data spreadsheet. \nYou can use default filename or input a new name.",
+        "Minimum intensity of the image. Adjust this for better contrast.\n(This will not affect particle tracking or data analysis.)",
+        "Maximum intensity of the image. Adjust this for better contrast.\n(This will not affect particle tracking or data analysis.)",
+        "The frame number of the image to be displayed.",
+        "The particle number of the time-trace to be displayed."
         ]
 
 # Create the first entry for the file input with a button to open the file dialog
@@ -848,7 +852,6 @@ label_extra.grid(row=19, column=0, padx=10, pady=5)
 entry_extra = tk.Entry(root, width=40)
 entry_extra.insert(0, default_values[18])
 entry_extra.grid(row=19, column=1, columnspan=2, padx=10, pady=5)
-entries.append(entry_extra)
 CreateToolTip(label_extra, text = tips[18])
 
 
@@ -869,10 +872,13 @@ Min_label = tk.Label(root, text="Min: ")
 Min_label.grid(row=20, column=4, pady=5)
 Min_entry = tk.Entry(root, width=10)
 Min_entry.grid(row=20, column=5, padx=2, pady=5)
+CreateToolTip(Min_label, text = tips[19])
+
 Max_label = tk.Label(root, text="Max: ")
 Max_label.grid(row=20, column=6, pady=5)
 Max_entry = tk.Entry(root, width=10)
 Max_entry.grid(row=20, column=7, padx=2, pady=5)
+CreateToolTip(Max_label, text = tips[20])
 
 # Create an entry of frame number to present
 frame_label = tk.Label(root, text="Frame: ")
@@ -880,6 +886,7 @@ frame_label.grid(row=20, column=8, pady=5)
 frame_entry = tk.Entry(root, width=5)
 frame_entry.insert(0, 0)
 frame_entry.grid(row=20, column=9, padx=2, pady=5)
+CreateToolTip(frame_label, text = tips[21])
 
 # Create a button to show raw image
 raw_button = tk.Button(root, text="Raw image", command=lambda: [submit(), loadimage(), RawImg()])
@@ -907,6 +914,7 @@ PN_label.grid(row=20, column=10, pady=5)
 PN_entry = tk.Entry(root, width=5)
 PN_entry.insert(0, 0)
 PN_entry.grid(row=20, column=11, padx=2, pady=5)
+CreateToolTip(PN_label, text = tips[22])
 
 # Create a button to perform analysis (Background subtraction, trace stitching, classification)
 Plot_button = tk.Button(root, text="Plot", command=particle_trace)
